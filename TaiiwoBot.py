@@ -1,14 +1,14 @@
 import urllib2, socket, time, re
 #settings
-channel = "#426699k"
+channel = "#verite"
 server = "irc.freenode.net"
 port = 6667 #6667 is the default irc port
-nick = "TaiiwoBot_"
+nick = "ChangeBot"
 user = "Taiiwo__"
 loginmessage = "-- TaiiwoBot v1.33.7 ONLINE --" #Leave blank for no message
 urltolog = "http://m3ps.blogspot.de/"
 maxchanges = 3 #maximum number of changes to log to IRC in one go.
-interval = 0.1 #time in seconds allow for inaccuracies. raise to reduce rescource usage.
+interval = 1 #time in seconds allow for inaccuracies. raise to reduce rescource usage.
 debug = False #turn debugging on and off
 ignorelines = [-1,-2]#add lines for the script to ignore. This is useful for constantly
 #		changing lines.
@@ -53,7 +53,10 @@ while 1:
 		print 'starting loop'
 	i = 0
 	changes = []
-	newhtml = urllib2.urlopen(urltolog).read().splitlines()
+	try:
+		newhtml = urllib2.urlopen(urltolog).read().splitlines()
+	except:
+		print 503
 	if debug == True:
         	print str(len(newhtml)) + 'lines in newhtml'
 	while i <= len(newhtml) - 1:
