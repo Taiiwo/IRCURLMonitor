@@ -45,8 +45,8 @@ oldhtml = urllib2.urlopen(urltolog).read().splitlines()
 #starting loop
 pongcount = 0
 while 1:
-	if pongcount >= 30:
-		s.send('PONG freenode.net\r\n')
+	if pongcount >= 10:
+		s.send('PONG irc.freenode.net\r\n')
 		pongcount = 0
 	pongcount = pongcount + 1
 	if debug == True:
