@@ -10,7 +10,7 @@ urltolog = "http://m3ps.blogspot.de/"
 maxchanges = 3 #maximum number of changes to log to IRC in one go.
 interval = 1 #time in seconds allow for inaccuracies. raise to reduce rescource usage.
 debug = False #turn debugging on and off
-ignorelines = [-1,-2]#add lines for the script to ignore. This is useful for constantly
+ignorelines = [-1,-2, 19]#add lines for the script to ignore. This is useful for constantly
 #		changing lines.
 #define stuff
 def geturl(recv):#parse an URL from a string
@@ -84,7 +84,7 @@ while 1:
 		for y in changes:
 			s.send('PRIVMSG ' + channel + ' :Line ' + str(y) + ' changed from:\r\n')
                		s.send('PRIVMSG ' + channel + ' :' + oldhtml[y] + '\r\n')
-               		s.send('PRIVMSG ' + channel + ' :To:')  
+               		s.send('PRIVMSG ' + channel + ' :To:\r\n')  
                		s.send('PRIVMSG ' + channel + ' :' + newhtml[y] + '\r\n')
 	elif changes != [] and linelong == 0:
 		s.send('PRIVMSG ' + channel + ' :Multiple line changes. First '+ str(maxchanges) +':\r\n')
